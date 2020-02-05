@@ -1,60 +1,69 @@
-import com.sun.org.apache.xpath.internal.objects.XObject;
-
 public class Robot {
     int x;
     int y;
     String direction;
-    Object position;
+    String position;
 
-    public Robot(){
+    public Robot() {
         x = 0;
         y = 0;
         direction = "up";
-        position = "(" + this.x + ',' + this.y + ")";
+        position = "(" + x + ',' + y + ")";
+
     }
 
     public void getDirection() {
-        System.out.println(this.direction);
+        System.out.println(direction);
     }
 
-    public void getPosition(){
-        System.out.println(this.position);
+    public void getPosition() {
+        System.out.println(position);
     }
 
-    public void forward (){
-
-        if (this.direction == "up"){
-             this.y++;
-            this.position = "(" + this.x + ',' + this.y + ")";
-            System.out.println(this.position +"/" + this.direction);
-        } else if( this.direction == "Left") {
-            this.x--;
-            this.position = "(" + this.x + ',' + this.y + ")";
-            System.out.println(this.position +"/" + this.direction);
-        } else if (this.direction == "down") {
-            this.y--;
-            this.position = "(" + this.x + ',' + this.y + ")";
-            System.out.println(this.position +"/" + this.direction);
+    public void forward() {
+        switch (direction) {
+            case "up":
+                y++;
+                position = "(" + x + ',' + y + ")";
+                System.out.println(position + "/" + direction);
+                break;
+            case "Left":
+                x--;
+                position = "(" + x + ',' + y + ")";
+                System.out.println(position + "/" + direction);
+                break;
+            case "down":
+                y--;
+                position = "(" + x + ',' + y + ")";
+                System.out.println(position + "/" + direction);
+                break;
+            case "Right":
+                x++;
+                position = "(" + x + ',' + y + ")";
+                System.out.println(position + "/" + direction);
+                break;
 
         }
     }
 
-    public String rotateLeft(){
-        if (this.direction == "up") {
-                    this.direction = "Left";
-        } else if (this.direction == "Left") {
-            this.direction = "down";
+    public void rotateLeft() {
+        if (direction.equals("up")) {
+            direction = "Left";
+        } else if (direction.equals("Left")) {
+            direction = "down";
         }
-        return this.direction;
+
     }
 
-    public String rotateRight (){
-     if (this.direction == "down") {
-         this.direction = "Left";
-     } else if (this.direction == "Left") {
-         this.direction = "up";
-     }
-     return this.direction;
+    public void rotateRight() {
+        if (direction.equals("down")) {
+            direction = "Left";
+        } else if (direction.equals("Left")) {
+            direction = "up";
+        }
+
     }
 }
+
+
 
